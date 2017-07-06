@@ -115,6 +115,7 @@ func WDYWTD() string {
 	response2 := []string{"calculate", "calc"}
 	response3 := []string{"website", "web"}
 	response4 := []string{"help"}
+	response5 := []string{"locateIP", "locIP", "IP", "ip"}
 	if containsString(response1, response) {
 		return terminate()
 	} else if containsString(response2, response) {
@@ -131,6 +132,8 @@ func WDYWTD() string {
 		fmt.Println("website, web:		Opens a website.")
 		fmt.Println(" ")
 		return WDYWTDreturn()
+	} else if containsString(response5, response) {
+		return IPv4()
 	} else {
 		fmt.Println("Command not recognized. Commands are: terminate, calculate, website, help")
 		return WDYWTDreturn()
@@ -201,7 +204,7 @@ func calc() string {
 	if err != nil {
 		return calcreturn()
 	}
-	fmt.Println("What do you want to do with these? Commands are: add, sub, mul, div, sqrt")
+	fmt.Println("What do you want to do with these? Commands are: add, sub, mul, div, sqrt, pow")
 	_, err = fmt.Scanln(&response)
 	if err != nil {
 		return calcreturn()
@@ -211,6 +214,7 @@ func calc() string {
 	mult := []string{"mul"}
 	divi := []string{"div"}
 	sqrt := []string{"sqrt"}
+	pow := []string{"pow"}
 	cancel := []string{"cancel"}
 	if containsString(addi, response) {
 		fmt.Println(strconv.FormatFloat(Lib2.Add(X, Y), 'f', 6, 64))
@@ -230,6 +234,9 @@ func calc() string {
 	} else if containsString(sqrt, response) {
 		fmt.Println("Squareroot of your first Number: ", strconv.FormatFloat(Lib2.Sqrt(X), 'f', 6, 64))
 		fmt.Println("Squareroot of your second Number: ", strconv.FormatFloat(Lib2.Sqrt(Y), 'f', 6, 64))
+		return calcreturn()
+	} else if containsString(pow, response) {
+		fmt.Println(strconv.FormatFloat(Lib2.Pow(X, Y), 'f', 6, 64))
 		return calcreturn()
 	} else {
 		return calcreturn()
@@ -280,4 +287,11 @@ func openWebsite() string {
 
 func openWebsitereturn() string {
 	return openWebsite()
+}
+
+func IPv4() string {
+	fmt.Println("")
+	fmt.Println(Lib2.LocalIP())
+	fmt.Println("")
+	return WDYWTD()
 }
