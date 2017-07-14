@@ -131,11 +131,13 @@ func WDYWTD() string {
 		fmt.Println(" ")
 		fmt.Println("website, web:		Opens a website.")
 		fmt.Println(" ")
+		fmt.Println("locateIP, locIP, ip:	Tells you your current IP.")
+		fmt.Println(" ")
 		return WDYWTDreturn()
 	} else if containsString(response5, response) {
 		return IPv4()
 	} else {
-		fmt.Println("Command not recognized. Commands are: terminate, calculate, website, help")
+		fmt.Println("Command not recognized. Look for commands with: help")
 		return WDYWTDreturn()
 	}
 }
